@@ -6,6 +6,7 @@
 #include <gazebo_msgs/ModelStates.h>
 #include <unistd.h>
 #include <tf/transform_datatypes.h>
+#include <bits/stdc++.h>
 
 /* generate random double in a range */
 double fRand(double fMin, double fMax)
@@ -174,10 +175,29 @@ private:
         ids++;
 
         /* Define a box to add to the world. */
+
+        if(model.name[i][6] == '_' ){
+          primitive.type = primitive.SPHERE;
+          primitive.dimensions.resize(1);
+          primitive.dimensions[0] = 0.05;
+        } 
+        else{
         
-        primitive.type = primitive.SPHERE;
-        primitive.dimensions.resize(1);
-        primitive.dimensions[0] = 0.05;
+            primitive.type = primitive.BOX;
+            primitive.dimensions.resize(3);
+
+            primitive.dimensions[0] = 0.1;
+            primitive.dimensions[1] = 0.15;
+            primitive.dimensions[2] = 0.1;
+            
+           /*
+          primitive.type = primitive.SPHERE;
+          primitive.dimensions.resize(1);
+          primitive.dimensions[0] = 0.05;
+          */
+
+        }
+
 
         //primitive.dimensions[0] = 0.1;
         //primitive.dimensions[1] = 0.15;

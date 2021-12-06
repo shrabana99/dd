@@ -27,11 +27,6 @@
           </sphere>
         </geometry>
 
-        <geometry>
-          <box>
-            <size>0.1 0.2 0.1</size>
-          </box>
-        </geometry>
         <material>
           <lighting>1</lighting>
           <script>

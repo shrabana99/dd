@@ -24,7 +24,7 @@
 
         <geometry>
           <box>
-            <size>0.1 0.2 0.1</size>
+            <size>0.1 0.15 0.1</size>
           </box>
         </geometry>
 
@@ -50,9 +50,9 @@
         <max_contacts>10</max_contacts>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
-          <sphere>
-            <radius>0.05</radius>
-          </sphere>
+          <box>
+            <size>0.1 0.15 0.1</size>
+          </box>
         </geometry>
         <surface>
           <friction>
