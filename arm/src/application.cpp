@@ -119,14 +119,14 @@ private:
     primitive.type = primitive.BOX;
     primitive.dimensions.resize(3);
     primitive.dimensions[0] = 1;
-    primitive.dimensions[1] = 3;
+    primitive.dimensions[1] = 1;
     primitive.dimensions[2] = 0.8;
 
     geometry_msgs::Pose place_location;
 
     place_location.orientation.w = 1.0;
     place_location.position.x = -1;
-    place_location.position.y = 0;
+    place_location.position.y = 1;
     place_location.position.z = 0.4;
 
     collision_object.primitives.push_back(primitive);
@@ -134,6 +134,28 @@ private:
     collision_object.operation = collision_object.ADD;
 
     collision_objects.push_back(collision_object);
+
+    collision_object.id = "place_location1";
+
+    primitive.type = primitive.BOX;
+    primitive.dimensions.resize(3);
+    primitive.dimensions[0] = 1;
+    primitive.dimensions[1] = 1;
+    primitive.dimensions[2] = 0.8;
+
+    geometry_msgs::Pose place_location1;
+
+    place_location1.orientation.w = 1.0;
+    place_location1.position.x = -1;
+    place_location1.position.y = -1;
+    place_location1.position.z = 0.4;
+
+    collision_object.primitives.push_back(primitive);
+    collision_object.primitive_poses.push_back(place_location1);
+    collision_object.operation = collision_object.ADD;
+
+    collision_objects.push_back(collision_object);
+
     planning_scene_interface.addCollisionObjects(collision_objects);
   }
 
@@ -399,8 +421,12 @@ private:
     /* generate different poses for placing */
     for (int i = 0; i < 1000; i++)
     {
-      place_location.place_pose.pose.position.x = -1;
-      place_location.place_pose.pose.position.y = fRand(-1.24, 1.24);
+      place_location.place_pose.pose.position.x = fRand(-0.6, -1.4);  
+      if(target_id < 2) // 2 sphere 
+        place_location.place_pose.pose.position.y = fRand(0.6, 1.24);
+      else
+        place_location.place_pose.pose.position.y = fRand(-0.6, -1.24);
+
       place_location.place_pose.pose.position.z = 0.85;
       openGripper(true);
       places.push_back(place_location);
